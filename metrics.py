@@ -123,7 +123,8 @@ def ceafe(clusters, gold_clusters):
         for j in range(len(clusters)):
             scores[i, j] = phi4(gold_clusters[i], clusters[j])
     matching = linear_assignment(-scores)
-    similarity = sum(scores[matching[:, 0], matching[:, 1]])
+    # similarity = sum(scores[matching[:, 0], matching[:, 1]])
+    similarity = sum(scores[matching[0], matching[1]])
     return similarity, len(clusters), similarity, len(gold_clusters)
 
 
