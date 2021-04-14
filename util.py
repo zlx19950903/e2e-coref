@@ -17,8 +17,9 @@ import pyhocon
 
 
 def initialize_from_env():
-  if "GPU" in os.environ:
-    set_gpus(int(os.environ["GPU"]))
+  # print(os.environ)
+  if "CUDA_VISIBLE_DEVICES" in os.environ:
+    set_gpus(int(os.environ["CUDA_VISIBLE_DEVICES"]))
   else:
     set_gpus()
 

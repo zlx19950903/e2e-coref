@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dlx() {
-  wget $1/$2
+  # wget $1/$2
   tar -xvzf $2
   rm $2
 }
@@ -17,7 +17,7 @@ dlx $conll_url conll-2012-scripts.v3.tar.gz
 dlx http://conll.cemantix.org/download reference-coreference-scorers.v8.01.tar.gz
 mv reference-coreference-scorers conll-2012/scorer
 
-ontonotes_path=/projects/WebWare6/ontonotes-release-5.0
+ontonotes_path=/opt/tiger/src/e2e-coref/ontonotes-release-5.0
 bash conll-2012/v3/scripts/skeleton2conll.sh -D $ontonotes_path/data/files/data conll-2012
 
 function compile_partition() {
@@ -35,8 +35,8 @@ compile_language english
 compile_language chinese
 compile_language arabic
 
-python minimize.py
-python get_char_vocab.py
+python3 minimize.py
+python3 get_char_vocab.py
 
-python filter_embeddings.py glove.840B.300d.txt train.english.jsonlines dev.english.jsonlines
-python cache_elmo.py train.english.jsonlines dev.english.jsonlines
+python3 filter_embeddings.py glove.840B.300d.txt train.english.jsonlines dev.english.jsonlines
+python3 cache_elmo.py train.english.jsonlines dev.english.jsonlines
